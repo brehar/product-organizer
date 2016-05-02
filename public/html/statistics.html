@@ -1,0 +1,22 @@
+<h1>Product Statistics</h1>
+
+<h3>There are {{ numProducts }} products with a total value of {{ sum | currency : '$' : 2 }}.</h3>
+
+<br><br>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Category</th>
+            <th>Number of Products</th>
+            <th>Total Value</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="data in summary">
+            <td>{{ data.name }}</td>
+            <td>{{ data.items }}</td>
+            <td>{{ data.value | currency : '$' : 2 }}</td>
+        </tr>
+    </tbody>
+</table>

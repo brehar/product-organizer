@@ -1,0 +1,50 @@
+<div class="row" ng-show="productToEdit">
+    <h1>Edit Product</h1>
+
+    <form class="form-inline" ng-submit="saveEdit()">
+        <div class="form-group">
+            <input class="form-control" type="text" placeholder="Product Name" ng-model="productToEdit.name">
+        </div>
+        <div class="form-group">
+            <input class="form-control" type="text" placeholder="Description" ng-model="productToEdit.description">
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-addon">$</div>
+                <input type="number" class="form-control" placeholder="Price" min="0" step="0.01" ng-model="productToEdit.price">
+            </div>
+        </div>
+        <div class="form-group">
+            <select class="form-control" ng-model="productToEdit.category">
+                <option ng-repeat="category in categories">{{ category }}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <input class="form-control" type="url" placeholder="Image URL" ng-model="productToEdit.imageUrl">
+        </div>
+        <button type="button" class="btn btn-default" ng-click="cancelEdit()">Discard Changes</button>
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+    </form>
+</div>
+
+<br><br>
+
+<div class="row">
+    <div class="col-md-4 col-sm-12">
+        <img class="resize-large" ng-src="{{ product.imageUrl }}">
+    </div>
+
+    <div class="col-md-8 col-sm-12">
+        <p><span class="bold">Product Name:</span> {{ product.name }}</p>
+        <p><span class="bold">Description:</span> {{ product.description }}</p>
+        <p><span class="bold">Price:</span> {{ product.price | currency : '$' : 2 }}</p>
+        <p><span class="bold">Category:</span> {{ product.category }}</p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4 col-md-offset-4">
+        <button type="button" class="btn btn-primary" ng-click="editProduct()">Edit Product</button>
+        <button type="button" class="btn btn-danger" ng-click="removeProduct()">Delete Product</button>
+    </div>
+</div>
